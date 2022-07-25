@@ -1,9 +1,11 @@
 *** Settings ***
 Documentation   To validate login form
 Library  SeleniumLibrary
-
-#Do after test all case
-Test Teardown  Close Browser
+Library     Collections
+Library     String
+Test Setup      open the browser with the Mortgage payment url
+Resource    resource.robot
+#Test Teardown  Close Browser
 
 #Resource
 
@@ -11,24 +13,39 @@ Test Teardown  Close Browser
 #Global variable
 ${Error_Message_Login}  css:.alert-danger
 
+
 *** Test Cases ***
-Validate UnSuccessful login
-    open the browser with the Mortgage payment url
-    Fill the login From
-    wait until it checks and display error message
-    verify error message is correct
+Validate Child window Functionality
+    Select the link of Child window
+    Verify the user is Switched to Child window
+    Grab the Email id in the Child Window
+    Switch to Parent window and enter the Email
+
+
 *** Keywords ***
-open the browser with the Mortgage payment url
-     Create WebDriver   Chrome  executable_path=C:/Users/Tery/Documents/DriverPath/chromedriver.exe
-     go to  https://rahulshettyacademy.com/loginpagePractise/
-Fill the login From
-    input text  id:username     Palentine
-    input password  id:password     123456
-    click button  signInBtn
-wait until it checks and display error message
-    wait until element is visible  ${Error_Message_Login}
-verify error message is correct
-    #scope variable
-    ${result}=   get text   ${Error_Message_Login}
-    should be equal as strings  ${result}  Incorrect username/password.
-    element text should be  ${Error_Message_Login}  Incorrect username/password.
+Select the link of Child window
+    click element       css:.blinkingText
+    Sleep               5
+
+Verify the user is Switched to Child window
+    switch window       NEW
+    Element Text Should Be       css:h1     DOCUMENTS REQUEST
+
+
+Grab the Email id in the Child Window
+     ${text}=    get text    css:.red
+     @{words}=   Split String    ${text}     at
+     #0 ->Please email u
+     #1-> mentor@rahulshettyacademy.com with below template to receive response
+     ${text_split}=      Get From List       ${words}    1
+     log     ${text_split}
+     @{words_2}=   Split String    ${text_split}
+     #0->mentor@rahulshettyacademy.com
+     ${email}=      Get From List    ${words_2}    0
+     set global variable         ${email}
+
+
+Switch to Parent window and enter the Email
+    switch window       MAIN
+    Title Should Be     LoginPage Practise | Rahul Shetty Academy
+    Input Text          id:username     ${email}
