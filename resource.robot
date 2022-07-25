@@ -5,13 +5,13 @@ Documentation       A resource file
 Library             SeleniumLibrary
 
 *** Variables ***
-${user_name}             rahulshettyacademy
-${invalid_password}      123445
-${valid_password}        learning
-${url}      https://rahulshettyacademy.com/loginpagePractise/
+${user_name}             xxx
+${invalid_password}      xxx
+${valid_password}        xxx
+${url}      xxx
 *** Keywords ***
 open the browser with the Mortgage payment url
-     Create WebDriver   Chrome  executable_path=C:/Users/Tery/Documents/DriverPath/chromedriver.exe
+     Create WebDriver   Chrome  executable_path=path/chromedriver.exe
      go to  ${url}
 Close Browser Session
     close browser
