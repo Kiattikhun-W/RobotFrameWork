@@ -16,6 +16,7 @@ ${Error_Message_Login}  css:.alert-danger
 
 *** Test Cases ***
 Validate Child window Functionality
+    [Tags]    Smoke
     Select the link of Child window
     Verify the user is Switched to Child window
     Grab the Email id in the Child Window
