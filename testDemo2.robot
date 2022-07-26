@@ -6,7 +6,7 @@ Library    Collections
 Test Setup      open the browser with the Mortgage payment url
 #Do after test all case
 #Test Teardown  Close Browser Session
-Resource       resource.robot
+Resource       page/Generic.robot
 #Resource
 
 *** Variables ***

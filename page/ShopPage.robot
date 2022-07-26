@@ -22,9 +22,9 @@ Verify Card titles in the Shop page
     END
     lists should be equal   ${expectedList}   ${actualList}
 
-Select the Card
-    [Arguments]    ${cardName}
-    add_items_to_cart_and_checkout  ${cardName}
+#Select the Card
+#    [Arguments]    ${cardName}
+#    add_items_to_cart_and_checkout  ${cardName}
 #    ${elements} =  Get WebElements     css:.card-title
 #    ${index}=    set variable    1
 #    FOR    ${element}    IN    @{elements}

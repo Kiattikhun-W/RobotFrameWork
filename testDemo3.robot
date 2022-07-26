@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 Library     Collections
 Library     String
 Test Setup      open the browser with the Mortgage payment url
-Resource    resource.robot
+Resource    page/Generic.robot
 #Test Teardown  Close Browser
 
 #Resource
