@@ -15,3 +15,6 @@ open the browser with the Mortgage payment url
      go to  ${url}
 Close Browser Session
     close browser
+Wait Until element passed is located on Page
+    [Arguments]         ${page_locator}
+    Wait Until Element Is Visible        ${page_locator}        timeout=10
